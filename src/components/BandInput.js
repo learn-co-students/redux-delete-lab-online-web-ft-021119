@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-// import uuid from 'uuid';
-
-
 
 class BandInput extends Component {
 
@@ -22,8 +19,6 @@ class BandInput extends Component {
       bandName: '',
     });
   }
-
-  // let quote = {...this.state, id:uuid()}
 
 
   render() {

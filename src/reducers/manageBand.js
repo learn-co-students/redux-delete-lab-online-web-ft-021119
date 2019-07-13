@@ -4,7 +4,12 @@ export default function manageBand(state = {
   console.log(action)
   switch (action.type) {
     case 'ADD_BAND':
-    return { ...state, bands: [...state.bands, action.name] }
+    const band = {
+        id: Math.random(),
+        name: action.name
+      }
+
+    return { ...state, bands: [...state.bands, band] }
 
 
     case 'DELETE_BAND':
@@ -15,8 +20,3 @@ export default function manageBand(state = {
       return state;
   }
 };
-// const todo = {
-//     id: Math.random()*10000000000000000,
-//     text: action.payload.text
-//   }
-//   return { todos: state.todos.concat(todo) };
