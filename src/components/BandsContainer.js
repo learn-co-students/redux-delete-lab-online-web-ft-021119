@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux';
 import BandInput from './BandInput';
-import Band from './Band';
 import Bands from './Bands';
 
 
@@ -10,16 +8,12 @@ import { connect } from 'react-redux'
 
 class BandsContainer extends Component {
 
-  renderBands = () => this.props.bands.map(band => <Band delete={this.props.delete} key={band.id} band={band} />)
 
   render() {
     return (
       <div>
-        {this.renderBands()}
         <BandInput addBand={this.props.addBand} />
-        <Bands bands={this.props.bands} />
-        <Band bandName={this.props.deleteBand} />
-
+        <Bands bands={this.props.bands} deleteBand={this.props.deleteBand} />
       </div>
     )
   }
@@ -27,23 +21,13 @@ class BandsContainer extends Component {
 
 
 
-
-
 const mapStateToProps = ({ bands }) => ({ bands })
 
-// const mapDispatchToProps = dispatch => ({
-//   addBand: name => dispatch({ type: "ADD_BAND", name })
-// })
-
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    addBand: name => dispatch({ type: "ADD_BAND", name }),
+const mapDispatchToProps = (dispatch) => ({
+   addBand: name => dispatch({ type: "ADD_BAND", name }),
     deleteBand: id => dispatch({ type: 'DELETE_BAND', id })
-  });
-}
+})
 
-// deleteVehicle: id => dispatch({ type: 'REMOVE_VEHICLE', id: id}),
 
 
 
